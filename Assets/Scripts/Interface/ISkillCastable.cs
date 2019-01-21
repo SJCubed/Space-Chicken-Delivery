@@ -2,5 +2,5 @@
 
 public interface ISkillCastable
 {
-    void Cast(SkillCaster caster);
+    void Cast(SkillCaster newCaster);
 }

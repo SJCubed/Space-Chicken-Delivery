@@ -34,7 +34,7 @@ public abstract class SkillBase : ScriptableObject, ISkillCastable
     public SkillAction[] SkillActions;
 
     //When the caster uses the skill, this method is called
-    public virtual void Cast(SkillCaster caster)
+    public virtual void Cast(SkillCaster newCaster)
     {
         //Check if this skill can be cast
         if (SkillChecks != null)
@@ -42,7 +42,7 @@ public abstract class SkillBase : ScriptableObject, ISkillCastable
             bool canCast = true;
             foreach (SkillCheck skillCheck in SkillChecks)
             {
-                if (!skillCheck.Check(caster))
+                if (!skillCheck.Check(newCaster))
                 {
                     canCast = false;
                     break;
@@ -59,7 +59,7 @@ public abstract class SkillBase : ScriptableObject, ISkillCastable
             {
                 if (SkillActions != null)
                 {
-                    caster.StartCoroutine(DoAction(caster));
+                    newCaster.StartCoroutine(DoAction(newCaster));
                 }
                 else
                 {
@@ -70,6 +70,6 @@ public abstract class SkillBase : ScriptableObject, ISkillCastable
         }
     }
 
-    public abstract IEnumerator DoAction(SkillCaster caster);
+    public abstract IEnumerator DoAction(SkillCaster newCaster);
 
 }
