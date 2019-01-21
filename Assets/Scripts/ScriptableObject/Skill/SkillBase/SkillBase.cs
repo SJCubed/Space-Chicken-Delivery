@@ -21,11 +21,16 @@ public enum SkillLevel
 
 public abstract class SkillBase : ScriptableObject, ISkillCastable
 {
-    public string SkillName { get; private set; }
+    public string SkillName;
+
     //For when Icons are used
     //public Sprite Icon { get; private set; }
-    public SkillType SkillType { get; private set; }
-    public SkillLevel SkillLevel { get; private set; }
+
+    [Multiline]
+    public string SkillDescription;
+    [Space]
+    public SkillType SkillType;
+    public SkillLevel SkillLevel;
     //SkillCheck is for checking if this skill can be casted upon keypress
     [Space]
     public SkillCheck[] SkillChecks;
