@@ -2,9 +2,5 @@
 
 public abstract class SkillCheck : ScriptableObject
 {
-
-    public abstract bool Check(SkillCaster newCaster);
-
-
-
+    public abstract bool Check(SkillBase newSkill, SkillCaster newCaster);
 }

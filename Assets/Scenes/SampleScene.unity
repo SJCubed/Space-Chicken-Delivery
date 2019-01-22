@@ -223,7 +223,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8027ec4ca36a9542823cab44d783dca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerSkillSlot: {fileID: 11400000, guid: 751878a7dca64904cabf4e75050fa419, type: 2}
+  playerSkillSlot: {fileID: 11400000, guid: 8adf7b35ed282ff479a79db247a914c6, type: 2}
 --- !u!4 &1387439733
 Transform:
   m_ObjectHideFlags: 0
