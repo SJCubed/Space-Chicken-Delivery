@@ -31,6 +31,17 @@ public abstract class SkillBase : ScriptableObject, ISkillCastable
     [Space]
     public SkillType SkillType;
     public SkillLevel SkillLevel;
+    [Space]
+    [HideInInspector]
+    public float CurrentCooldown = 0f;
+    public float Cooldown = 1f;
+    [HideInInspector]
+    public float CurrentChargeUpTime = 0f;
+    public float ChargeUpTime = 1f;
+    [HideInInspector]
+    public int CurrentCharge = 1;
+    public int MaxCharge = 1;
+
     //SkillCheck is for checking if this skill can be casted upon keypress
     [Space]
     public SkillCheck[] SkillChecks;
@@ -59,12 +70,17 @@ public abstract class SkillBase : ScriptableObject, ISkillCastable
                 Debug.Log("Can't cast this skill at this time");
                 return;
             }
-            //If the skill can be cast then Start DoAction Coroutine
+            //If the skill can be cast then set the cooldown and
+            //use one Charge and Start DoAction Coroutine
             else
             {
                 if (SkillActions != null)
                 {
+                    CurrentCooldown = Cooldown;
+                    CurrentCharge--;
+
                     newCaster.StartCoroutine(DoAction(newCaster));
+
                 }
                 else
                 {
