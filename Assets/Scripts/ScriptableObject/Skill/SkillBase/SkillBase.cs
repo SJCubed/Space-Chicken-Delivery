@@ -37,6 +37,7 @@ public class SkillBase : ScriptableObject
     public float CurrentSkillCooldown { get => currentSkillCooldown; set => currentSkillCooldown = value; }
     public float CurrentRechargeTime { get => currentChargeUpTime; set => currentChargeUpTime = value; }
     public int CurrentCharge { get => currentRechargeTime; set => currentRechargeTime = value; }
+
     [Space]
     public float SkillCooldown = 1f;
     public float RechargeTime = 1f;
@@ -46,6 +47,7 @@ public class SkillBase : ScriptableObject
     //MultiCast is array of SkillActions that gets called sequentially based on time or input
     public SkillAction[] MultiCast;
     private int multiCastStage = 0;
+    public int MultiCastStage { get => multiCastStage; }
 
     //When the caster uses the skill, this method is called
     public void Cast(SkillCaster newCaster)
@@ -53,6 +55,7 @@ public class SkillBase : ScriptableObject
         if (MultiCast[multiCastStage].SkillChecks != null)
         {
             bool canCast = true;
+
             //Check if this skill can be cast
             foreach (SkillCheck newSkillCheck in MultiCast[multiCastStage].SkillChecks)
             {
